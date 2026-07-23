@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Medicine Stock | OHC Management System</title>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+<div class="wrapper d-flex">
+
+<!-- Sidebar -->
+
+<nav class="sidebar bg-primary text-white">
+
+<div class="text-center p-3">
+
+<img src="icons/logo.png" width="70">
+
+<h4 class="mt-3">
+
+OHC System
+
+</h4>
+
+</div>
+
+<hr>
+
+<ul class="nav flex-column">
+
+<li class="nav-item">
+
+<a class="nav-link text-white"
+href="dashboard.html">
+
+<i class="bi bi-speedometer2"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link text-white"
+href="purchase.html">
+
+<i class="bi bi-cart-check"></i>
+
+Medicine Purchase
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link active text-white"
+href="stock.html">
+
+<i class="bi bi-box-seam-fill"></i>
+
+Medicine Stock
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link text-white"
+href="medicine-use.html">
+
+<i class="bi bi-capsule-pill"></i>
+
+Medicine Use
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link text-white"
+href="stock-alert.html">
+
+<i class="bi bi-exclamation-triangle-fill"></i>
+
+Stock Alert
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link text-white"
+href="reports.html">
+
+<i class="bi bi-file-earmark-bar-graph"></i>
+
+Reports
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+<!-- Content -->
+
+<div class="content flex-grow-1">
+
+<nav class="navbar navbar-light bg-white shadow-sm">
+
+<div class="container-fluid">
+
+<h3 class="fw-bold">
+
+Medicine Stock
+
+</h3>
+
+</div>
+
+</nav>
+
+<div class="container-fluid mt-4">
+
+<!-- Summary Cards -->
+
+<div class="row">
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow border-0">
+
+<div class="card-body text-center">
+
+<h6>
+
+Total Medicines
+
+</h6>
+
+<h2 id="totalMedicine">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow border-0">
+
+<div class="card-body text-center">
+
+<h6>
+
+Available Stock
+
+</h6>
+
+<h2 id="availableStock">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow border-0">
+
+<div class="card-body text-center">
+
+<h6>
+
+Low Stock
+
+</h6>
+
+<h2 class="text-danger"
+id="lowStock">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow border-0">
+
+<div class="card-body text-center">
+
+<h6>
+
+Expired
+
+</h6>
+
+<h2 class="text-warning"
+id="expiredStock">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="card shadow border-0 mb-4">
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-5">
+
+<input
+type="text"
+class="form-control"
+id="searchMedicine"
+placeholder="Search Medicine">
+
+</div>
+
+<div class="col-md-3">
+
+<select
+class="form-select"
+id="category">
+
+<option>
+
+All Categories
+
+</option>
+
+<option>
+
+Tablet
+
+</option>
+
+<option>
+
+Capsule
+
+</option>
+
+<option>
+
+Syrup
+
+</option>
+
+<option>
+
+Injection
+
+</option>
+
+</select>
+
+</div>
+
+<div class="col-md-2 d-grid">
+
+<button
+class="btn btn-success">
+
+<i class="bi bi-search"></i>
+
+Search
+
+</button>
+
+</div>
+
+<div class="col-md-2 d-grid">
+
+<a
+href="purchase.html"
+class="btn btn-primary">
+
+New Purchase
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Continue in Part 2 -->
+ <!-- Stock Table -->
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+
+<h5 class="mb-0">
+
+Medicine Stock List
+
+</h5>
+
+<div>
+
+<button class="btn btn-light btn-sm me-2">
+
+<i class="bi bi-arrow-repeat"></i>
+
+Refresh
+
+</button>
+
+<button class="btn btn-success btn-sm">
+
+<i class="bi bi-plus-circle"></i>
+
+Stock Adjustment
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card-body table-responsive">
+
+<table class="table table-bordered table-hover align-middle">
+
+<thead class="table-light">
+
+<tr>
+
+<th>#</th>
+
+<th>Medicine</th>
+
+<th>Category</th>
+
+<th>Batch No</th>
+
+<th>Expiry Date</th>
+
+<th>Purchase Price</th>
+
+<th>Available Qty</th>
+
+<th>Minimum Qty</th>
+
+<th>Status</th>
+
+<th width="180">
+
+Action
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="stockTable">
+
+<tr>
+
+<td>1</td>
+
+<td>Paracetamol 500mg</td>
+
+<td>Tablet</td>
+
+<td>PCM2507</td>
+
+<td>30-Jun-2028</td>
+
+<td>₹2.50</td>
+
+<td>500</td>
+
+<td>100</td>
+
+<td>
+
+<span class="badge bg-success">
+
+Available
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn btn-sm btn-info">
+
+<i class="bi bi-eye"></i>
+
+</button>
+
+<button class="btn btn-sm btn-warning">
+
+<i class="bi bi-pencil"></i>
+
+</button>
+
+<button class="btn btn-sm btn-danger">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td>Cetirizine 10mg</td>
+
+<td>Tablet</td>
+
+<td>CET2409</td>
+
+<td>31-Dec-2027</td>
+
+<td>₹3.20</td>
+
+<td>30</td>
+
+<td>100</td>
+
+<td>
+
+<span class="badge bg-danger">
+
+Low Stock
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn btn-sm btn-info">
+
+<i class="bi bi-eye"></i>
+
+</button>
+
+<button class="btn btn-sm btn-warning">
+
+<i class="bi bi-pencil"></i>
+
+</button>
+
+<button class="btn btn-sm btn-danger">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+
+<td>ORS Powder</td>
+
+<td>Powder</td>
+
+<td>ORS1125</td>
+
+<td>15-Jan-2026</td>
+
+<td>₹8.00</td>
+
+<td>0</td>
+
+<td>50</td>
+
+<td>
+
+<span class="badge bg-dark">
+
+Out of Stock
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn btn-sm btn-info">
+
+<i class="bi bi-eye"></i>
+
+</button>
+
+<button class="btn btn-sm btn-warning">
+
+<i class="bi bi-pencil"></i>
+
+</button>
+
+<button class="btn btn-sm btn-danger">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>4</td>
+
+<td>Amoxicillin 500mg</td>
+
+<td>Capsule</td>
+
+<td>AMX3022</td>
+
+<td>10-Aug-2026</td>
+
+<td>₹4.50</td>
+
+<td>220</td>
+
+<td>80</td>
+
+<td>
+
+<span class="badge bg-success">
+
+Available
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn btn-sm btn-info">
+
+<i class="bi bi-eye"></i>
+
+</button>
+
+<button class="btn btn-sm btn-warning">
+
+<i class="bi bi-pencil"></i>
+
+</button>
+
+<button class="btn btn-sm btn-danger">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- Continue in Part 3 -->
+--><!-- Footer Action Buttons -->
+
+<div class="mt-4 d-flex justify-content-between align-items-center">
+
+    <div>
+    
+            <button class="btn btn-primary" id="refreshStock">
+            
+                        <i class="bi bi-arrow-clockwise"></i>
+                        
+                                    Refresh Stock
+                                    
+                                            </button>
+                                            
+                                                </div>
+                                                
+                                                    <div>
+                                                    
+                                                            <button class="btn btn-success me-2" id="printStock">
+                                                            
+                                                                        <i class="bi bi-printer"></i>
+                                                                        
+                                                                                    Print
+                                                                                    
+                                                                                            </button>
+                                                                                            
+                                                                                                    <button class="btn btn-warning me-2" id="excelStock">
+                                                                                                    
+                                                                                                                <i class="bi bi-file-earmark-excel"></i>
+                                                                                                                
+                                                                                                                            Excel
+                                                                                                                            
+                                                                                                                                    </button>
+                                                                                                                                    
+                                                                                                                                            <button class="btn btn-danger" id="pdfStock">
+                                                                                                                                            
+                                                                                                                                                        <i class="bi bi-file-earmark-pdf"></i>
+                                                                                                                                                        
+                                                                                                                                                                    PDF
+                                                                                                                                                                    
+                                                                                                                                                                            </button>
+                                                                                                                                                                            
+                                                                                                                                                                                </div>
+                                                                                                                                                                                
+                                                                                                                                                                                </div>
+                                                                                                                                                                                
+                                                                                                                                                                                <!-- Footer -->
+                                                                                                                                                                                
+                                                                                                                                                                                <footer class="bg-white shadow-sm text-center mt-5 p-3">
+                                                                                                                                                                                
+                                                                                                                                                                                    <small class="text-muted">
+                                                                                                                                                                                    
+                                                                                                                                                                                            © 2026 OHC Management System | Medicine Stock Management
+                                                                                                                                                                                            
+                                                                                                                                                                                                </small>
+                                                                                                                                                                                                
+                                                                                                                                                                                                </footer>
+                                                                                                                                                                                                
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                
+                                                                                                                                                                                                <!-- Bootstrap -->
+                                                                                                                                                                                                
+                                                                                                                                                                                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                                                                                                                                                                                                
+                                                                                                                                                                                                <!-- Firebase -->
+                                                                                                                                                                                                
+                                                                                                                                                                                                <script type="module" src="js/firebase.js"></script>
+                                                                                                                                                                                                
+                                                                                                                                                                                                <!-- Stock Script -->
+                                                                                                                                                                                                
+                                                                                                                                                                                                <script type="module" src="js/stock.js"></script>
+                                                                                                                                                                                                
+                                                                                                                                                                                                <!-- Common Script -->
+                                                                                                                                                                                                
+                                                                                                                                                                                                <script type="module" src="js/app.js"></script>
+                                                                                                                                                                                                
+                                                                                                                                                                                                <script>
+                                                                                                                                                                                                
+                                                                                                                                                                                                // Search Medicine
+                                                                                                                                                                                                
+                                                                                                                                                                                                const searchBox = document.getElementById("searchMedicine");
+                                                                                                                                                                                                
+                                                                                                                                                                                                searchBox.addEventListener("keyup", function(){
+                                                                                                                                                                                                
+                                                                                                                                                                                                const filter = this.value.toUpperCase();
+                                                                                                                                                                                                
+                                                                                                                                                                                                const rows = document.querySelectorAll("#stockTable tr");
+                                                                                                                                                                                                
+                                                                                                                                                                                                rows.forEach(row=>{
+                                                                                                                                                                                                
+                                                                                                                                                                                                const txt = row.textContent.toUpperCase();
+                                                                                                                                                                                                
+                                                                                                                                                                                                row.style.display = txt.indexOf(filter)>-1 ? "" : "none";
+                                                                                                                                                                                                
+                                                                                                                                                                                                });
+                                                                                                                                                                                                
+                                                                                                                                                                                                });
+                                                                                                                                                                                                
+                                                                                                                                                                                                // Print
+                                                                                                                                                                                                
+                                                                                                                                                                                                document.getElementById("printStock").onclick=function(){
+                                                                                                                                                                                                
+                                                                                                                                                                                                window.print();
+                                                                                                                                                                                                
+                                                                                                                                                                                                };
+                                                                                                                                                                                                
+                                                                                                                                                                                                // Excel
+                                                                                                                                                                                                
+                                                                                                                                                                                                document.getElementById("excelStock").onclick=function(){
+                                                                                                                                                                                                
+                                                                                                                                                                                                alert("Excel Export will be connected later.");
+                                                                                                                                                                                                
+                                                                                                                                                                                                };
+                                                                                                                                                                                                
+                                                                                                                                                                                                // PDF
+                                                                                                                                                                                                
+                                                                                                                                                                                                document.getElementById("pdfStock").onclick=function(){
+                                                                                                                                                                                                
+                                                                                                                                                                                                alert("PDF Export will be connected later.");
+                                                                                                                                                                                                
+                                                                                                                                                                                                };
+                                                                                                                                                                                                
+                                                                                                                                                                                                // Refresh
+                                                                                                                                                                                                
+                                                                                                                                                                                                document.getElementById("refreshStock").onclick=function(){
+                                                                                                                                                                                                
+                                                                                                                                                                                                location.reload();
+                                                                                                                                                                                                
+                                                                                                                                                                                                };
+                                                                                                                                                                                                
+                                                                                                                                                                                                </script>
+                                                                                                                                                                                                
+                                                                                                                                                                                                </body>
+                                                                                                                                                                                                
+                                                                                                                                                                                                </html>
+                                                                                                                                                                                            -->
